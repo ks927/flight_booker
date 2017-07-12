@@ -1,2 +1,19 @@
 <h1>Flight Booker</h1>
 
+<%= form_for(:flight, method: :get, url: flights_path) do |f| %>
+
+  Select an Airport from which you are departing:
+  <%= f.collection_select(:flight, @from_options, :id, :name) %>
+  <br>
+  Select the Airport at which you will be arriving:
+  <%= f.collection_select(:flight, @to_options, :id, :name) %>
+  <br>
+  Select the Date you will be traveling:
+  <%= f.collection_select(:flight, Flight.all, :date, :date) %>
+  <br>
+  Select the number of passengers for your flight:
+  <%= select_tag(:passengers, options_for_select(1..4)) %>
+  <br>
+  <%= f.submit "Book" %>
+
+<% end %>
