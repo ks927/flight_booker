@@ -30,16 +30,16 @@
             <tr>
               <td><%= radio_button_tag(:flight_id, flight.id) %></td>
               <td><%= flight.date %></td>
-              <td><%= flight.from_airport.name %></td>
-              <td><%= flight.to_airport.name %></td>
+              <td><%= flight.from_airport %></td>
+              <td><%= flight.to_airport %></td>
               <td><%= flight.duration %></td>
             </tr>
         </table>
     <% end %>
    <%= submit_tag "Book!" %>
   <% end %>
-<% if @message %>
-  <p><%= @message %></p>
+<% if @avail_flights.blank? %>
+  <p>Sorry, no flights were found.</p>
 <% end %>
 <% end %>
 

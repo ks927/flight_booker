@@ -6,24 +6,11 @@ class FlightsController < ApplicationController
         @to_options = @flights.map { |f| f.to_airport }.uniq
         @dates = @flights.get_dates
         
-        # handle params from form
-        if params[:commit]
-            search_flights
-        end
-            
-    end
+        @avail_flights = Flight.search_flights(params) 
         
-    private
-        
-    def search_flights
-       @avail_flights = Flight.where(from_airport_id: params[:flight][:from_airport], to_airport_id: params[:flight][:to_airport], date: Time.parse(params[:flight][:date]) )
-       if params[:flight][:from_airport] == params[:flight][:to_airport]
-          flash[:danger] = "Choose a different airport!"  
-       end
-       if @avail_flights.blank?
-           @message = "Sorry no flights found. Try another date."
-       end
+    
     end
+    
 end
 
 =begin
@@ -32,4 +19,17 @@ end
 
 =begin
 Flight.search_results(params[:flight][:from_airport], params[:flight][:to_airport], params[:flight][:date].to_date)
+=end
+
+=begin
+# Query database with params info
+    def search_flights
+       @avail_flights = Flight.where(from_airport_id: params[:flight][:from_airport], to_airport_id: params[:flight][:to_airport])
+       if params[:flight][:from_airport] == params[:flight][:to_airport]
+          flash[:danger] = "Choose a different airport!"  
+       end
+       if @avail_flights.blank?
+           @message = "Sorry no flights found. Try another date."
+       end
+    end
 =end
