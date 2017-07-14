@@ -18,15 +18,28 @@
 
 <% end %>
 
-
 <% if @avail_flights %>
-<h1>Available Flights</h1>
-  <%= @avail_flights.each do |flight| %>
-    <p><%= flight.id %></p>
-    <p><%= flight.date %></p>
+  <% form_tag(new_booking_path, method: :get) do %>
+    <%= @avail_flights.each do |flight| %>
+      <% hidden_field_tag(:passengers, params[:passengers]) %>
+        <table>
+          <th><%= label_tag "Flight No." %></th>
+          <th><%= label_tag "Date" %></th>
+          <th><%= label_tag "From" %></th>
+          <th><%= label_tag "To" %></th>
+            <tr>
+              <td><%= radio_button_tag(:flight_id, flight.id) %></td>
+              <td><%= flight.date %></td>
+              <td><%= flight.from_airport.name %></td>
+              <td><%= flight.to_airport.name %></td>
+              <td><%= flight.duration %></td>
+            </tr>
+        </table>
+    <% end %>
+   <%= submit_tag "Book!" %>
   <% end %>
-<% if @avail_flights.blank? %>
-<p>Sorry, no flights found. Choose another date.</p>
+<% if @message %>
+  <p><%= @message %></p>
 <% end %>
 <% end %>
 

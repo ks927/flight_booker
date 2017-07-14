@@ -2,13 +2,16 @@ class Flight < ApplicationRecord
     belongs_to :from_airport, :class_name => "Airport"
     belongs_to :to_airport, :class_name => "Airport"
     
+    has_many :bookings
+    has_many :passengers, :through => :bookings
+    
     validates :date, presence: true
     
     # Retrieve dates and change to in M/D/Y format
     def self.get_dates
         flights = Flight.all.order(date: :asc)
         flights.sort_by { |f| f.date }
-        flights.map { |f| f.date }.uniq
+        flights.map { |f| f.date.strftime("%b %d %Y") }.uniq
     end
     
     # Query db with params info
