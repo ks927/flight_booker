@@ -1,15 +1,15 @@
 <h1>Flight Booker</h1>
 
-<%= form_for(:flight, method: :get, url: flights_path) do %>
+<%= form_for(flights_path, method: :get) do %>
 
   Select the Airport from which you are departing:
-  <%= collection_select(:flight, :from_airport, @from_options, :id, :name) %>
+  <%= select_tag(:from_airport, options_for_select(@from_options)) %>
   <br>
   Select the Airport at which you will be arriving:
-  <%= collection_select(:flight, :to_airport, @to_options, :id, :name) %>
+  <%= select_tag(:to_airport, options_for_select(@to_options)) %>
   <br>
   Select the Date you will be traveling:
-  <%= select_tag("flight[date]", options_for_select(@dates)) %>
+  <%= select_tag(:date, options_for_select(@dates)) %>
   <br>
   Select the number of passengers for your flight:
   <%= select_tag(:passengers, options_for_select(1..4)) %>
@@ -18,10 +18,9 @@
 
 <% end %>
 
-<% if @avail_flights %>
-  <% form_tag(new_booking_path, method: :get) do %>
+<% unless @avail_flights.blank? %>
+  <%= form_tag(new_booking_path, method: :get) do %>
     <%= @avail_flights.each do |flight| %>
-      <% hidden_field_tag(:passengers, params[:passengers]) %>
         <table>
           <th><%= label_tag "Flight No." %></th>
           <th><%= label_tag "Date" %></th>
@@ -37,9 +36,10 @@
         </table>
     <% end %>
    <%= submit_tag "Book!" %>
-  <% end %>
-<% if @avail_flights.blank? %>
-  <p>Sorry, no flights were found.</p>
+   <% hidden_field_tag(:passengers, params[:passengers]) %>
+<% end %>
+<% if @avail_flights.empty? %>
+    <p>Sorry, no flights were found.</p>
 <% end %>
 <% end %>
 

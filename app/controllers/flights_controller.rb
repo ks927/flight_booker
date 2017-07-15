@@ -2,13 +2,24 @@ class FlightsController < ApplicationController
     
     def index
         @flights = Flight.all
-        @from_options = @flights.map { |f| f.from_airport }.uniq
-        @to_options = @flights.map { |f| f.to_airport }.uniq
+        @from_options = @flights.map { |f| f.from_airport.name }.uniq
+        @to_options = @flights.map { |f| f.to_airport.name }.uniq
         @dates = @flights.get_dates
         
-        @avail_flights = Flight.search_flights(params) 
+        if params[:commit]
+           @avail_flights = search_flights 
+        end
         
-    
+    end
+        
+        private
+        
+        # Query database with params info
+    def search_flights
+       date = params[:date]
+       from_airport = Airport.find_by_name( params[:from_airport])
+       to_airport = Airport.find_by_name( params[:to_airport])
+        Flight.where("from_airport_id = ? AND to_airport_id = ? AND date = ?", from_airport.id, to_airport.id, date)
     end
     
 end
