@@ -7,7 +7,7 @@ class FlightsController < ApplicationController
         @dates = @flights.get_dates
         
         if params[:commit]
-           @avail_flights = search_flights 
+           @avail_flights = Flight.search_flights(params) 
             if @avail_flights.blank?
                 flash.now[:danger] = "Sorry no flights found."
             end
@@ -15,17 +15,6 @@ class FlightsController < ApplicationController
         
     end
         
-        private
-        
-        # Query database with params info
-    def search_flights
-       date = params[:date]
-       from_airport = Airport.find_by_name( params[:from_airport])
-       to_airport = Airport.find_by_name( params[:to_airport])
-        Flight.where("from_airport_id = ? AND to_airport_id = ? AND date = ?", from_airport.id, to_airport.id, date)
-        
-    end
-    
 end
 
 =begin
