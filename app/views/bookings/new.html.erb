@@ -1,2 +1,17 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Flight Details</h1>
+        <table>
+          <th><%= label_tag "Flight No." %></th>
+          <th><%= label_tag "Date" %></th>
+          <th><%= label_tag "From" %></th>
+          <th><%= label_tag "To" %></th>
+          <th><%= label_tag "Duration" %></th> 
+            <tr>
+              <td><%= @flight.id %></td>
+              <td><%= @flight.date %></td>
+              <td><%= @flight.from_airport.name %></td>
+              <td><%= @flight.to_airport.name %></td>
+              <td><%= @flight.duration %></td>
+            </tr>
+        </table>
+
+<h3>Enter Personal Information</h3>
