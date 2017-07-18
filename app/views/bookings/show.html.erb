@@ -13,11 +13,12 @@
               <td><%= @booking.flight.date %></td>
               <td><%= @booking.flight.from_airport.name %></td>
               <td><%= @booking.flight.to_airport.name %></td>
-              <td><%= @booking.flight.duration %> minutes</td>
+              <td><%= @booking.flight.format_duration %></td>
               
             </tr>
 </table>
                 <h3>Passenger Details</h3>
+                <div class="col-md-6">
                 <table class="table table-bordered">
                 <th>Passenger Name</th>
                 <th>Passenger Email</th>
@@ -30,6 +31,7 @@
                   </tr>
                 
 </table>
+</div>
 </div>
             
         

@@ -1,5 +1,7 @@
 <div class="container">
   <h1>Find a Flight</h1>
+    <div class="row">
+    <div class="col-md-6">
     <div class="form-group">
       <%= form_for(flights_path, method: :get) do %>
 
@@ -16,12 +18,15 @@
   <%= select_tag(:passengers, options_for_select(@passengers), class: "form-control") %>
   <br>
   <%= submit_tag "Search", class: "btn btn-primary" %>
-
 <% end %>
+        </div>
+        </div>
     </div>
 </div>
 
+
 <% unless @avail_flights.blank? %>
+<div class="container available">
   <h3>Available Flights</h3>
   <%= form_tag(new_booking_path, method: :get) do %>
     <% @avail_flights.each do |flight| %>
@@ -46,4 +51,5 @@
    <%= submit_tag "Book!" %>
 <% end %>
 <% end %>
+</div>
 

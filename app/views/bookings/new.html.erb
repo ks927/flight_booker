@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Flight Details</h1>
+<h3>Flight Details</h3>
         <table class="table table-bordered">
           <th><%= label_tag "Flight No." %></th>
           <th><%= label_tag "Date" %></th>
@@ -21,13 +21,17 @@
 <%= f.hidden_field :flight_id, :value => @flight.id %>
   <% count = 0 %>
     <%= "Passenger #{count += 1} information:" %>
+    <div class="row">
+      <div class="col-md-6">
       <%= f.fields_for :passenger do |passenger_form| %>
        Name:
-       <%= passenger_form.text_field :name %>
+       <%= passenger_form.text_field :name, class: "form-control" %>
        Email:
-      <%= passenger_form.text_field :email %>
+      <%= passenger_form.text_field :email, class: "form-control" %>
   
     <% end %>
   <%= f.submit "Book" %>
 <% end %>
+      </div>
+    </div>
 </div>
