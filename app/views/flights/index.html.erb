@@ -12,7 +12,7 @@
   <%= select_tag(:date, options_for_select(@dates)) %>
   <br>
   Select the number of passengers for your flight:
-  <%= select_tag(:passengers, options_for_select(1..4)) %>
+  <%= select_tag(:passengers, options_for_select(@passengers)) %>
   <br>
   <%= submit_tag "Search" %>
 
@@ -22,7 +22,7 @@
   <h3>Available Flights</h3>
   <%= form_tag(new_booking_path, method: :get) do %>
     <% @avail_flights.each do |flight| %>
-    <%= hidden_field_tag(:passengers, :value => params[:passengers]) %>
+    <%= hidden_field_tag(:passengers, params[:passengers]) %>
         <table>
           <th></th>
           <th><%= label_tag "Flight No." %></th>

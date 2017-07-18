@@ -12,7 +12,7 @@ Airport.all.each do |from_airport|
         4.times do 
         Flight.create!(from_airport_id: from_airport.id,
                         to_airport_id: to_airport.id,
-                        date: (Date.today + rand(1..10).weeks).strftime("%m/%d/%Y"),
+                        date: (Date.today + time.weeks).strftime("%m/%d/%Y"),
                         duration: 60 * time)
         end
       end
