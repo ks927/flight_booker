@@ -1,0 +1,20 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* Header */
+
+.navbar {
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #D2D6DF;
+  color: #666a73;
+  height: 60px;
+  .header_left {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px;
+    p > a {
+          color: lightskyblue;
+    }
+  }
+}

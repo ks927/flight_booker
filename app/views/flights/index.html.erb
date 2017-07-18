@@ -1,29 +1,32 @@
-<h1>Flight Booker</h1>
-
-<%= form_for(flights_path, method: :get) do %>
+<div class="container">
+  <h1>Find a Flight</h1>
+    <div class="form-group">
+      <%= form_for(flights_path, method: :get) do %>
 
   Select the Airport from which you are departing:
-  <%= select_tag(:from_airport, options_for_select(@from_options)) %>
+  <%= select_tag(:from_airport, options_for_select(@from_options), class: "form-control") %>
   <br>
   Select the Airport at which you will be arriving:
-  <%= select_tag(:to_airport, options_for_select(@to_options)) %>
+  <%= select_tag(:to_airport, options_for_select(@to_options), class: "form-control") %>
   <br>
   Select the Date you will be traveling:
-  <%= select_tag(:date, options_for_select(@dates)) %>
+  <%= select_tag(:date, options_for_select(@dates), class: "form-control") %>
   <br>
   Select the number of passengers for your flight:
-  <%= select_tag(:passengers, options_for_select(@passengers)) %>
+  <%= select_tag(:passengers, options_for_select(@passengers), class: "form-control") %>
   <br>
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
 
 <% end %>
+    </div>
+</div>
 
 <% unless @avail_flights.blank? %>
   <h3>Available Flights</h3>
   <%= form_tag(new_booking_path, method: :get) do %>
     <% @avail_flights.each do |flight| %>
     <%= hidden_field_tag(:passengers, params[:passengers]) %>
-        <table>
+        <table class="table table-hover">
           <th></th>
           <th><%= label_tag "Flight No." %></th>
           <th><%= label_tag "Date" %></th>
@@ -36,7 +39,7 @@
               <td><%= flight.date %></td>
               <td><%= flight.from_airport.name %></td>
               <td><%= flight.to_airport.name %></td>
-              <td><%= flight.duration %></td>
+              <td><%= flight.format_duration %></td>
             </tr>
         </table>
       <% end %>

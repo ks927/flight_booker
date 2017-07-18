@@ -1,5 +1,6 @@
+<div class="container">
 <h1>Flight Details</h1>
-        <table>
+        <table class="table table-bordered">
           <th><%= label_tag "Booking No." %></th>
           <th><%= label_tag "Flight No." %></th>
           <th><%= label_tag "Date" %></th>
@@ -13,11 +14,11 @@
               <td><%= @booking.flight.from_airport.name %></td>
               <td><%= @booking.flight.to_airport.name %></td>
               <td><%= @booking.flight.duration %> minutes</td>
-              <td></td>
+              
             </tr>
 </table>
                 <h3>Passenger Details</h3>
-                <table>
+                <table class="table table-bordered">
                 <th>Passenger Name</th>
                 <th>Passenger Email</th>
                 
@@ -29,6 +30,7 @@
                   </tr>
                 
 </table>
+</div>
             
         
 

@@ -23,6 +23,14 @@ class Flight < ApplicationRecord
         
     end
     
+    def format_duration
+       if duration % 60 != 0
+           "#{duration/60} hours #{duration%60} minutes"
+        else
+           "#{duration/60} hours"
+       end
+    end
+    
 end
 
 =begin
