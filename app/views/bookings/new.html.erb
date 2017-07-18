@@ -15,3 +15,16 @@
         </table>
 
 <h3>Enter Personal Information</h3>
+
+<%= form_for @booking do |f| %>
+<%= f.hidden_field :flight_id, :value => @flight.id %>
+<%= f.fields_for :number do |passenger_form| %>
+
+Name:
+<%= passenger_form.text_field :name %>
+Email:
+<%= passenger_form.text_field :email %>
+
+<% end %>
+<%= f.submit "Book" %>
+<% end %>

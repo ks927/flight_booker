@@ -22,6 +22,7 @@
   <h3>Available Flights</h3>
   <%= form_tag(new_booking_path, method: :get) do %>
     <% @avail_flights.each do |flight| %>
+    <%= hidden_field_tag(:passengers, :value => params[:passengers]) %>
         <table>
           <th></th>
           <th><%= label_tag "Flight No." %></th>
@@ -40,7 +41,6 @@
         </table>
       <% end %>
    <%= submit_tag "Book!" %>
-   <% hidden_field_tag(:passengers, params[:passengers]) %>
 <% end %>
 <% end %>
 

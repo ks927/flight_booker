@@ -1,0 +1,23 @@
+<h1>Flight Details</h1>
+        <table>
+          <th><%= label_tag "Booking No." %></th>
+          <th><%= label_tag "Flight No." %></th>
+          <th><%= label_tag "Date" %></th>
+          <th><%= label_tag "From" %></th>
+          <th><%= label_tag "To" %></th>
+          <th><%= label_tag "Duration" %></th>
+          <th><%= label_tag "Passengers" %></th> 
+            <tr>
+              <td><%= @booking.id %></td>
+              <td><%= @booking.flight.id %></td>
+              <td><%= @booking.flight.date %></td>
+              <td><%= @booking.flight.from_airport.name %></td>
+              <td><%= @booking.flight.to_airport.name %></td>
+              <td><%= @booking.flight.duration %> minutes</td>
+              
+            </tr>
+        </table>
+
+
+
+
