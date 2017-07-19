@@ -27,6 +27,8 @@
 
 <% unless @avail_flights.blank? %>
 <div class="container available">
+  <div class="row">
+    <div class="col-md-6">
   <h3>Available Flights</h3>
   <%= form_tag(new_booking_path, method: :get) do %>
     <% @avail_flights.each do |flight| %>
@@ -51,5 +53,7 @@
    <%= submit_tag "Book!" %>
 <% end %>
 <% end %>
+    </div>
+  </div>
 </div>
 
