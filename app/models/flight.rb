@@ -15,11 +15,8 @@ class Flight < ApplicationRecord
     end
     
     # Query database with params info
-    def self.search_flights(params)
-       date = params[:date]
-       from_airport = Airport.find_by_name( params[:from_airport])
-       to_airport = Airport.find_by_name( params[:to_airport])
-        Flight.where("from_airport_id = ? AND to_airport_id = ? AND date = ?", from_airport.id, to_airport.id, parse_date(date))
+    def self.search_flights(from_airport, to_airport, date)
+        where(from_airport_id: from_airport, to_airport_id: to_airport, date: Flight.parse_date(date))
         
     end
     
@@ -59,4 +56,10 @@ where(from_airport_id: from_airport, to_airport_id: to_airport, date: DateTime.s
     def self.search_flights(params)
        self.where(from_airport_id: params[:flight][:from_airport], to_airport_id: params[:flight][:to_airport], date: params[:flight][:date]) 
     end
+=end
+
+=begin
+date = params[:date]
+       from_airport = Airport.find_by_name( params[:from_airport])
+       to_airport = Airport.find_by_name( params[:to_airport])
 =end
