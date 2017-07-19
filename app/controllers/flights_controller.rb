@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
         @flights = Flight.all
         @from_options = @flights.map { |f| f.from_airport.name }.uniq
         @to_options = @flights.map { |f| f.to_airport.name }.uniq
-        @dates = @flights.get_dates
+        @dates = Flight.get_dates
         @passengers = [1,2,3,4]
         
         if params[:commit]

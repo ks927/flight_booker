@@ -11,7 +11,7 @@ class Flight < ApplicationRecord
     def self.get_dates
         flights = Flight.all.order(date: :asc)
         flights.sort_by { |f| f.date }
-        flights.map { |f| f.date }.uniq
+        flights.map { |f| f.date.strftime('%b %d, %Y') }.uniq
     end
     
     # Query database with params info
@@ -19,8 +19,14 @@ class Flight < ApplicationRecord
        date = params[:date]
        from_airport = Airport.find_by_name( params[:from_airport])
        to_airport = Airport.find_by_name( params[:to_airport])
-        Flight.where("from_airport_id = ? AND to_airport_id = ? AND date = ?", from_airport.id, to_airport.id, date)
+        Flight.where("from_airport_id = ? AND to_airport_id = ? AND date = ?", from_airport.id, to_airport.id, parse_date(date))
         
+    end
+    
+    # Parse a string date into a range object representing the whole day
+    def self.parse_date(date)
+      datetime = date.to_datetime
+      datetime.beginning_of_day..datetime.end_of_day
     end
     
     def format_duration

@@ -1,5 +1,5 @@
 class ChangeDateFormatInFlights < ActiveRecord::Migration[5.0]
   def change
-      change_column :flights, :date, :string
+      change_column :flights, :date, :datetime
   end
 end
