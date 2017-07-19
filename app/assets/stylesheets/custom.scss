@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Universal */
+
+body {
+    background: image-url('flightbooker.jpeg') no-repeat center center fixed;
+}
+
 /* Header */
 
 .navbar {
@@ -21,6 +27,14 @@
 
 /* Tables */
 
-.container.available {
+.search, .available, .details, .personal, .book, .passenger {
+    background: white;
+    opacity: 0.90;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.available, .personal, .passenger {
     margin-bottom: 20px;
+    margin-top: 20px;
 }

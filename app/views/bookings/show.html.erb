@@ -1,14 +1,13 @@
 <div class="container">
 <h1>Flight Details</h1>
-        <table class="table table-bordered">
-          <th><%= label_tag "Booking No." %></th>
-          <th><%= label_tag "Flight No." %></th>
-          <th><%= label_tag "Date" %></th>
-          <th><%= label_tag "Time" %></th>
-          <th><%= label_tag "From" %></th>
-          <th><%= label_tag "To" %></th>
-          <th><%= label_tag "Duration" %></th> 
-            <tr>
+    <div class="row">
+        <div class="col-md-10 book">
+        <table class="table table-responsive">
+          <thead>
+            <th>Booking no.</th>
+            <%= render 'flights/thead' %>
+          </thead>
+            <tr class="success">
               <td><%= @booking.id %></td>
               <td><%= @booking.flight.id %></td>
               <td><%= @booking.flight.date.strftime('%b %d, %Y') %></td>
@@ -19,9 +18,11 @@
               
             </tr>
 </table>
+        </div>
+    </div>
+                <div class="col-sm-6 passenger">
                 <h3>Passenger Details</h3>
-                <div class="col-md-6">
-                <table class="table table-bordered">
+                <table class="table table-responsive">
                 <th>Passenger Name</th>
                 <th>Passenger Email</th>
                 

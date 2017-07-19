@@ -26,6 +26,7 @@ class Flight < ApplicationRecord
       datetime.beginning_of_day..datetime.end_of_day
     end
     
+    # Change duration into hours and minutes
     def format_duration
        if duration % 60 != 0
            "#{duration/60} hours #{duration%60} minutes"
