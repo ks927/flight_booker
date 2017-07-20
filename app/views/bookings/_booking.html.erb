@@ -1,0 +1,7 @@
+<td><%= @booking.id %></td>
+<td><%= @booking.flight.id %></td>
+<td><%= @booking.flight.date.strftime('%b %d, %Y') %></td>
+<td><%= @booking.flight.date.strftime('%I:%M%P') %></td>
+<td><%= @booking.flight.from_airport.name %></td>
+<td><%= @booking.flight.to_airport.name %></td>
+<td><%= @booking.flight.format_duration %></td>

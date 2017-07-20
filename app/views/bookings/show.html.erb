@@ -8,14 +8,7 @@
             <%= render 'flights/thead' %>
           </thead>
             <tr class="success">
-              <td><%= @booking.id %></td>
-              <td><%= @booking.flight.id %></td>
-              <td><%= @booking.flight.date.strftime('%b %d, %Y') %></td>
-              <td><%= @booking.flight.date.strftime('%I:%M%P') %></td>
-              <td><%= @booking.flight.from_airport.name %></td>
-              <td><%= @booking.flight.to_airport.name %></td>
-              <td><%= @booking.flight.format_duration %></td>
-              
+              <%= render 'booking' %>
             </tr>
 </table>
         </div>
@@ -25,13 +18,12 @@
                 <table class="table table-responsive">
                 <th>Passenger Name</th>
                 <th>Passenger Email</th>
-                
+                <% @booking.passengers.each do |p| %>
                   <tr>
-                    <% @booking.passengers.each do |p| %></td>
                     <td><%= p.name %></td>
                     <td><%= p.email %></td>
-                    <% end %>
                   </tr>
+                <% end %>
                 
 </table>
 </div>

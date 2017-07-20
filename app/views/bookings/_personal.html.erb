@@ -2,16 +2,16 @@
 <%= f.hidden_field :flight_id, :value => @flight.id %>
 <div class="row">
   <div class="col-sm-6 personal">
-  <% count = 0 %>
-    <h3><%= "Passenger #{count += 1} information:" %></h3>
-      <%= f.fields_for :passenger do |passenger_form| %>
+  <% count = 1 %>
+      <%= f.fields_for :passengers do |passenger_form| %>
+      <h3>Passenger <%= "#{count}" %> information:</h3>
        Name:
        <%= passenger_form.text_field :name, class: "form-control" %>
        Email:
       <%= passenger_form.text_field :email, class: "form-control" %>
-  
+  <% count += 1 %>
     <% end %>
-  <%= f.submit "Book", class: "btn btn-success btn-large" %>
+  <%= f.submit "Book!", class: "btn btn-success btn-large" %>
 <% end %>
     </div>
 </div>
