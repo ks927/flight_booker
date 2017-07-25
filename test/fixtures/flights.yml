@@ -3,11 +3,11 @@
 one:
   date: 2017-07-11 19:23:16
   duration: 1
-  from_airport_id: 1
-  to_airport_id: 1
+  from_airport: phi
+  to_airport: phi
 
 two:
   date: 2017-07-11 19:23:16
   duration: 1
-  from_airport_id: 1
-  to_airport_id: 1
+  from_airport: phi
+  to_airport: phi

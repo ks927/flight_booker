@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class FlightTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "invalid flight without date" do 
+     flight = Flight.new(date: "") 
+     assert_not flight.valid?
+  end
+    
 end
