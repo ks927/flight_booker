@@ -3,5 +3,5 @@
 phi:
   name: PHI
 
-two:
-  name: MyString
+lax:
+  name: LAX
