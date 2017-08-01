@@ -1,0 +1,27 @@
+<h1>Flight Booker</h1>
+
+<p><%= @passenger.name %>, thanks for booking with us!</p>
+
+<p>Here are your flight details!</p>
+
+
+<table>
+  <thead>
+    <th>Booking No.</th>
+    <th>Flight No.</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Duration</th> 
+  </thead>
+    <tr>
+<td><%= @booking.id %></td>  
+<td><%= @booking.flight.id %></td>
+<td><%= @booking.flight.date.strftime('%b %d, %Y') %></td>
+<td><%= @booking.flight.date.strftime('%I:%M%P') %></td>
+<td><%= @booking.flight.from_airport.name %></td>
+<td><%= @booking.flight.to_airport.name %></td>
+<td><%= @booking.flight.format_duration %></td>
+    </tr>
+</table>

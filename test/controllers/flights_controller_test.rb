@@ -13,7 +13,7 @@ class FlightsControllerTest < ActionDispatch::IntegrationTest
     
   test "should use params to search for flights" do
      get flights_url, params: { flight: { from_airport: @flight.from_airport, to_airport: @flight.to_airport, date: @flight.date }}
-     assert flash.empty?
+     assert_response :success
   end
     
 end

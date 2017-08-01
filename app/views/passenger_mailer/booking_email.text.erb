@@ -1,0 +1,12 @@
+<%= @passenger.name %>, thanks for booking with us!
+==================================================
+
+Here are your flight details:
+
+@booking.id
+@booking.flight.id
+@booking.flight.date.strftime('%b %d, %Y')
+@booking.flight.date.strftime('%I:%M%P')
+@booking.flight.from_airport.name
+@booking.flight.to_airport.name
+@booking.flight.format_duration
