@@ -7,16 +7,9 @@ class Flight < ApplicationRecord
     
     validates :date, presence: true
     
-    # Retrieve dates and change to M D, Y format
-    def self.get_dates
-        flights = Flight.all.order(date: :asc)
-        flights.sort_by { |f| f.date }
-        flights.map { |f| f.date.strftime('%b %d, %Y') }.uniq
-    end
-    
     # Query database with params info
     def self.search_flights(from_airport, to_airport, date)
-        where(from_airport_id: from_airport, to_airport_id: to_airport, date: Flight.parse_date(date))
+       where(from_airport_id: from_airport, to_airport_id: to_airport, date: Flight.parse_date(date))
         
     end
     
