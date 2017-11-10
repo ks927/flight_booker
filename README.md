@@ -30,7 +30,7 @@ $ rails server
 
 ## N+1 Problem and Fix
 
-Original average load time for this application's main page was 2574ms. After fixing the N+1 query for the main form, I reduced the load time 602ms on average.
+Original average load time for this application's main page was 2574ms. After fixing the N+1 query for the main form, I reduced the load time to 602ms on average.
 
 Original average load time for search results was 1845ms. I reduced it to an average of 221ms. 
 
